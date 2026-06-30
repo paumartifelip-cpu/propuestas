@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta Comercial – Restaurante Alba</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f4f4f4;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    .header {
+      background: #0a0a0a;
+      color: #fff;
+      padding: 64px 40px 56px;
+      text-align: center;
+    }
+    .header .brand {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #FF6B00;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .header h1 {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .header h1 span {
+      color: #FF6B00;
+    }
+    .header .subtitle {
+      font-size: 17px;
+      color: #888;
+    }
+    .header .subtitle strong {
+      color: #ccc;
+    }
+
+    /* ACCENT BAR */
+    .accent-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #FF6B00 0%, #FFAA00 100%);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* VALIDITY */
+    .validity {
+      text-align: right;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 28px;
+      margin-bottom: -4px;
+    }
+
+    /* SECTION CARD */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .card-header {
+      background: #0a0a0a;
+      color: #fff;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .card-header .ico {
+      font-size: 18px;
+    }
+    .card-header h2 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .card-body {
+      padding: 32px;
+    }
+
+    /* INTRO */
+    .intro-text {
+      font-size: 17px;
+      color: #333;
+      line-height: 1.75;
+    }
+    .intro-text strong {
+      color: #FF6B00;
+    }
+
+    /* INCLUDES */
+    .includes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .includes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #f8f8f8;
+      border-radius: 8px;
+      padding: 16px 20px;
+      border-left: 3px solid #FF6B00;
+    }
+    .includes-list li .dot {
+      color: #FF6B00;
+      font-size: 20px;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+    .includes-list li .text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 3px;
+    }
+    .includes-list li .text span {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* PRICE */
+    .price-block {
+      text-align: center;
+      padding: 44px 32px;
+    }
+    .price-label {
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 14px;
+    }
+    .price-main {
+      font-size: 72px;
+      font-weight: 900;
+      color: #FF6B00;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .price-main span {
+      font-size: 32px;
+      font-weight: 400;
+      color: #bbb;
+      letter-spacing: 0;
+    }
+    .price-tag {
+      display: inline-block;
+      margin-top: 16px;
+      background: #f4f4f4;
+      color: #555;
+      font-size: 14px;
+      padding: 7px 20px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* WHY */
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 580px) {
+      .reasons-grid { grid-template-columns: 1fr; }
+      .header h1 { font-size: 28px; }
+      .price-main { font-size: 56px; }
+    }
+    .reason {
+      background: #f8f8f8;
+      border-radius: 8px;
+      padding: 20px;
+      border-top: 3px solid #FF6B00;
+    }
+    .reason h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 6px;
+    }
+    .reason p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.55;
+    }
+
+    /* CTA */
+    .cta-block {
+      text-align: center;
+      padding: 44px 32px;
+    }
+    .cta-block h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .cta-block p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #FF6B00;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 44px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover {
+      background: #e05e00;
+    }
+    .cta-email {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #0a0a0a;
+      color: #555;
+      text-align: center;
+      padding: 36px 20px;
+      font-size: 13px;
+      margin-top: 0;
+    }
+    .footer .footer-name {
+      color: #FF6B00;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="brand">Pau Mart&#237; Felip &middot; Propuesta Comercial</div>
+    <h1>Automatizaci&#243;n de Reservas<br>con <span>Inteligencia Artificial</span></h1>
+    <div class="subtitle">Preparada exclusivamente para <strong>Restaurante Alba</strong></div>
+  </div>
+  <div class="accent-bar"></div>
+
+  <div class="container">
+
+    <div class="validity">V&#225;lida hasta el 30 de julio de 2026</div>
+
+    <!-- INTRO -->
+    <div class="card">
+      <div class="card-header">
+        <span class="ico">&#128075;</span>
+        <h2>Hola, Restaurante Alba</h2>
+      </div>
+      <div class="card-body">
+        <p class="intro-text">
+          He preparado esta propuesta espec&#237;ficamente para vosotros. El objetivo es claro:
+          que <strong>nunca m&#225;s perd&#225;is una reserva</strong> por falta de respuesta, errores humanos
+          o saturaci&#243;n en horas punta. Con un sistema de IA bien configurado, Restaurante Alba
+          gestiona sus reservas de forma aut&#243;noma &mdash; 24 horas al d&#237;a, 7 d&#237;as a la semana,
+          sin carga extra para vuestro equipo.
+        </p>
+      </div>
+    </div>
+
+    <!-- QU&#201; INCLUYE -->
+    <div class="card">
+      <div class="card-header">
+        <span class="ico">&#10003;</span>
+        <h2>Qu&#233; incluye el proyecto</h2>
+      </div>
+      <div class="card-body">
+        <ul class="includes-list">
+          <li>
+            <span class="dot">&#9670;</span>
+            <div class="text">
+              <strong>Agente IA de reservas autom&#225;tico</strong>
+              <span>Recibe, gestiona y confirma reservas por WhatsApp, formulario web o canal que us&#233;is, sin intervenci&#243;n manual.</span>
+            </div>
+          </li>
+          <li>
+            <span class="dot">&#9670;</span>
+            <div class="text">
+              <strong>Integraci&#243;n con vuestro sistema actual</strong>
+              <span>Conectamos la IA con Google Calendar, vuestro sistema de reservas o la agenda que us&#233;is hoy. Sin cambiar de herramientas.</span>
+            </div>
+          </li>
+          <li>
+            <span class="dot">&#9670;</span>
+            <div class="text">
+              <strong>Confirmaciones y recordatorios autom&#225;ticos</strong>
+              <span>El cliente recibe confirmaci&#243;n instant&#225;nea y un recordatorio 24 h antes. Menos no-shows, m&#225;s ocupaci&#243;n real.</span>
+            </div>
+          </li>
+          <li>
+            <span class="dot">&#9670;</span>
+            <div class="text">
+              <strong>Disponibilidad en tiempo real</strong>
+              <span>El sistema consulta aforo, turnos y cierres autom&#225;ticamente. Cero dobles reservas, cero errores.</span>
+            </div>
+          </li>
+          <li>
+            <span class="dot">&#9670;</span>
+            <div class="text">
+              <strong>Panel de control sencillo</strong>
+              <span>Vista clara de todas las reservas. Podéis modificar, cancelar o consultar sin tocar ning&#250;n software complicado.</span>
+            </div>
+          </li>
+          <li>
+            <span class="dot">&#9670;</span>
+            <div class="text">
+              <strong>Formaci&#243;n al equipo (1 sesi&#243;n)</strong>
+              <span>Una sesi&#243;n de 60 minutos para que todo el equipo use el sistema con confianza desde el primer d&#237;a.</span>
+            </div>
+          </li>
+          <li>
+            <span class="dot">&#9670;</span>
+            <div class="text">
+              <strong>30 d&#237;as de soporte post-lanzamiento</strong>
+              <span>Cualquier ajuste o duda durante el primer mes, lo resuelvo sin coste adicional.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRECIO -->
+    <div class="card">
+      <div class="card-header">
+        <span class="ico">&#128176;</span>
+        <h2>Inversi&#243;n</h2>
+      </div>
+      <div class="price-block">
+        <div class="price-label">Precio total del proyecto</div>
+        <div class="price-main">1.200<span> &#8364;</span></div>
+        <div class="price-tag">Pago &#250;nico &middot; Sin cuotas mensuales &middot; Sin sorpresas</div>
+      </div>
+    </div>
+
+    <!-- POR QU&#201; YO -->
+    <div class="card">
+      <div class="card-header">
+        <span class="ico">&#127919;</span>
+        <h2>Por qu&#233; trabajar conmigo</h2>
+      </div>
+      <div class="card-body">
+        <div class="reasons-grid">
+          <div class="reason">
+            <h3>IA aplicada, no te&#243;rica</h3>
+            <p>No vendo promesas. Entrego sistemas que funcionan desde el d&#237;a uno, adaptados a c&#243;mo trabaja tu negocio.</p>
+          </div>
+          <div class="reason">
+            <h3>Hecho a medida</h3>
+            <p>Nada de plantillas gen&#233;ricas. Cada automatizaci&#243;n se dise&#241;a espec&#237;ficamente para Restaurante Alba.</p>
+          </div>
+          <div class="reason">
+            <h3>Entrega en 7&#8211;10 d&#237;as</h3>
+            <p>El sistema completo estar&#225; listo y operativo en menos de dos semanas desde la confirmaci&#243;n.</p>
+          </div>
+          <div class="reason">
+            <h3>Trato directo</h3>
+            <p>Trabajas conmigo, no con un equipo que no te conoce. Comunicaci&#243;n clara y sin intermediarios.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PR&#211;XIMO PASO -->
+    <div class="card">
+      <div class="card-header">
+        <span class="ico">&#128640;</span>
+        <h2>Pr&#243;ximo paso</h2>
+      </div>
+      <div class="cta-block">
+        <h3>&#191;Empezamos?</h3>
+        <p>Escr&#237;beme y en menos de 24 horas agendamos una llamada r&#225;pida de 20 minutos<br>para arrancar el proyecto sin m&#225;s esperas.</p>
+        <a href="mailto:paumartifelip@gmail.com" class="cta-btn">Quiero empezar</a>
+        <span class="cta-email">paumartifelip@gmail.com</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="accent-bar"></div>
+  <div class="footer">
+    <div class="footer-name">Pau Mart&#237; Felip</div>
+    <div>IA &middot; Automatizaci&#243;n &middot; Sistemas para negocios</div>
+  </div>
+
+</body>
+</html>
