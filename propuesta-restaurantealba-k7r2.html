@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta · Restaurante Alba · Pau Martí Felip</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --bg3: #161616;
+      --orange: #f97316;
+      --orange-light: #fb923c;
+      --orange-dim: rgba(249,115,22,0.12);
+      --white: #f5f5f5;
+      --grey: #a3a3a3;
+      --border: rgba(249,115,22,0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .brand {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+    .brand span { color: var(--orange); }
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--orange-dim);
+      color: var(--orange);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+    }
+    .hero-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--grey);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+    .price-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange-dim);
+      border: 1.5px solid var(--orange);
+      border-radius: 999px;
+      padding: 0.6rem 1.6rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--orange);
+      letter-spacing: -0.01em;
+    }
+    .price-pill small {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--orange-light);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .divider hr {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+    }
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .section h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.1rem;
+    }
+    .section p {
+      color: var(--grey);
+      font-size: 1rem;
+      max-width: 660px;
+    }
+
+    /* ── PAIN CARDS ── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .pain-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.25rem;
+    }
+    .pain-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .pain-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--white);
+    }
+    .pain-card p {
+      font-size: 0.85rem;
+      color: var(--grey);
+    }
+
+    /* ── INCLUDES ── */
+    .includes-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .include-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+    }
+    .include-item .check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .include-item .check svg {
+      width: 12px;
+      height: 12px;
+      stroke: #000;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .include-item strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      color: var(--white);
+    }
+    .include-item span {
+      font-size: 0.85rem;
+      color: var(--grey);
+    }
+
+    /* ── WHY ME ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .why-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.4rem 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--orange);
+    }
+    .why-card .num {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.04em;
+    }
+    .why-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .why-card p {
+      font-size: 0.82rem;
+      color: var(--grey);
+    }
+
+    /* ── PRICE BLOCK ── */
+    .price-block {
+      background: var(--bg2);
+      border: 1.5px solid var(--orange);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      max-width: 500px;
+      margin: 2rem auto 0;
+      text-align: center;
+    }
+    .price-block .amount {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--orange);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .price-block .amount sup {
+      font-size: 1.5rem;
+      vertical-align: super;
+    }
+    .price-block .type {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin: 0.5rem 0 1.25rem;
+    }
+    .price-block p {
+      font-size: 0.9rem;
+      color: var(--grey);
+      margin: 0 auto;
+      max-width: 320px;
+    }
+    .price-block .no-sub {
+      margin-top: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .cta-section p {
+      color: var(--grey);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: #000;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      padding: 0.9rem 2.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .cta-note {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--grey);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.75rem 2rem;
+      font-size: 0.8rem;
+      color: var(--grey);
+    }
+    footer strong { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      header { padding: 1rem 1.25rem; }
+      .hero { padding: 3.5rem 1.25rem 2.5rem; }
+      .section { padding: 2.5rem 1.25rem; }
+      .price-block { padding: 2rem 1.25rem; }
+      .cta-section { padding: 1.5rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="brand">Pau <span>Martí Felip</span></div>
+  <div class="badge">Propuesta Comercial</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Propuesta para Restaurante Alba</div>
+  <h1>Tu restaurante llena mesas.<br />La IA gestiona las <em>reservas</em>.</h1>
+  <p>Automatización completa del sistema de reservas con inteligencia artificial para que ni una mesa quede vacía por falta de respuesta.</p>
+  <div class="price-pill">
+    <span>1.200 €</span>
+    <small>· Pago único</small>
+  </div>
+</div>
+
+<div class="divider"><hr /></div>
+
+<!-- PROBLEMA -->
+<div class="section">
+  <div class="section-title">El problema</div>
+  <h2>Cada reserva no contestada<br />es una mesa que no se llena.</h2>
+  <p>Los restaurantes pierden hasta un 30% de reservas potenciales por no poder responder a tiempo. El teléfono suena en pleno servicio, los WhatsApps se acumulan y los clientes no esperan.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="icon">📵</div>
+      <h3>Fuera de horario</h3>
+      <p>Las reservas llegan por la noche o a mediodía. Sin respuesta, el cliente llama al local de al lado.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">⏳</div>
+      <h3>Personal ocupado</h3>
+      <p>En pleno servicio nadie puede atender llamadas ni WhatsApps. Se pierden reservas mientras se sirven mesas.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">❌</div>
+      <h3>Errores manuales</h3>
+      <p>Overbooking, dobles reservas y olvidos generan situaciones incómodas y pérdida de reputación.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">🔁</div>
+      <h3>Tiempo repetitivo</h3>
+      <p>Confirmar, cambiar y cancelar reservas consume horas de tu equipo cada semana sin generar valor.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"><hr /></div>
+
+<!-- QUÉ INCLUYE -->
+<div class="section">
+  <div class="section-title">Qué incluye</div>
+  <h2>Un sistema que trabaja<br />cuando tú no puedes.</h2>
+  <p>Todo lo necesario para que la IA gestione tus reservas de principio a fin, sin que tengas que tocar nada.</p>
+  <div class="includes-list">
+    <div class="include-item">
+      <div class="check"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg></div>
+      <div>
+        <strong>IA de reservas 24 / 7</strong>
+        <span>Responde y gestiona reservas por WhatsApp o formulario web a cualquier hora, sin intervención humana.</span>
+      </div>
+    </div>
+    <div class="include-item">
+      <div class="check"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg></div>
+      <div>
+        <strong>Confirmaciones y recordatorios automáticos</strong>
+        <span>El cliente recibe confirmación al instante y un recordatorio antes de su visita para reducir no-shows.</span>
+      </div>
+    </div>
+    <div class="include-item">
+      <div class="check"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg></div>
+      <div>
+        <strong>Gestión de cambios y cancelaciones</strong>
+        <span>La IA renegocia fechas, actualiza el calendario y libera mesas automáticamente sin que lo toques tú.</span>
+      </div>
+    </div>
+    <div class="include-item">
+      <div class="check"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg></div>
+      <div>
+        <strong>Panel de control en tiempo real</strong>
+        <span>Vista completa de todas las reservas del día, la semana y el mes. Siempre actualizada, desde el móvil.</span>
+      </div>
+    </div>
+    <div class="include-item">
+      <div class="check"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg></div>
+      <div>
+        <strong>Integración con tu sistema actual</strong>
+        <span>Se conecta a lo que ya usas: WhatsApp Business, web, Google Calendar o tu sistema de reservas.</span>
+      </div>
+    </div>
+    <div class="include-item">
+      <div class="check"><svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg></div>
+      <div>
+        <strong>30 días de soporte post-implementación</strong>
+        <span>Acompañamiento directo durante el primer mes para ajustar, optimizar y resolver cualquier duda.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"><hr /></div>
+
+<!-- PRECIO -->
+<div class="section">
+  <div class="section-title">Inversión</div>
+  <h2>Sin suscripciones.<br />Sin sorpresas.</h2>
+  <p>Un único pago y el sistema es tuyo para siempre. Sin cuotas mensuales, sin dependencia de plataformas externas.</p>
+  <div class="price-block">
+    <div class="amount"><sup>€</sup>1.200</div>
+    <div class="type">Pago único · Sin cuotas</div>
+    <p>Implementación completa, configuración personalizada y 30 días de soporte incluidos.</p>
+    <div class="no-sub">✦ &nbsp;Tuyo para siempre. Sin permanencias.</div>
+  </div>
+</div>
+
+<div class="divider"><hr /></div>
+
+<!-- POR QUÉ YO -->
+<div class="section">
+  <div class="section-title">Por qué Pau Martí Felip</div>
+  <h2>IA que funciona en negocios reales,<br />no en presentaciones.</h2>
+  <p>No vendo tecnología. Implemento sistemas que generan resultados medibles desde el primer día.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="num">IA</div>
+      <h3>Especializado</h3>
+      <p>Trabajo exclusivamente con inteligencia artificial y automatización para negocios físicos.</p>
+    </div>
+    <div class="why-card">
+      <div class="num">&lt;2w</div>
+      <h3>Implementación rápida</h3>
+      <p>El sistema queda operativo en menos de dos semanas desde que empezamos.</p>
+    </div>
+    <div class="why-card">
+      <div class="num">0€</div>
+      <h3>Sin cuotas</h3>
+      <p>Pago único. Sin plataformas de terceros que te cobren cada mes por siempre.</p>
+    </div>
+    <div class="why-card">
+      <div class="num">24h</div>
+      <h3>Siempre activo</h3>
+      <p>El sistema trabaja las 24 horas del día, los 365 días del año, sin vacaciones.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"><hr /></div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="section-title">Próximo paso</div>
+  <h2>Una llamada de 30 minutos<br />y empezamos esta semana.</h2>
+  <p>Sin compromiso. Te hago una demo en directo con datos de Restaurante Alba y te explico exactamente cómo funcionaría en tu caso.</p>
+  <a class="btn-primary" href="https://wa.me/34000000000?text=Hola%20Pau%2C%20quiero%20hablar%20sobre%20la%20propuesta%20de%20automatizaci%C3%B3n%20de%20reservas%20para%20Restaurante%20Alba" target="_blank" rel="noopener">Hablamos por WhatsApp</a>
+  <div class="cta-note">O escríbeme directamente a paumartifelip@gmail.com</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Propuesta preparada por <strong>Pau Martí Felip</strong> &nbsp;·&nbsp; IA, automatización y sistemas para negocios &nbsp;·&nbsp; 2025
+</footer>
+
+</body>
+</html>
